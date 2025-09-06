@@ -1,0 +1,39 @@
+{
+   "data" : [
+    {
+        "title" : "Mato Seihei no Slave",
+        "shortDescription" : "Cùng tác giả với Akame ga Kill, kể về những cuộc chiến chống lại những con quỷ ở trong Ma đô (1 chiều không gian khác đầy ác quỷ), ở đó có một loại \"Đào\" có thể ban phát sức mạnh đặc biệt cho người ăn nó, nhờ vậy mà con người có thể chống lại ác quỷ, nhưng đáng tiếc là nó chỉ có tác dụng với nữ giới",
+        "backgroundImg" : "linear-gradient(132deg, rgb(204, 176, 196) 0%, rgb(64, 22, 63) 100%)",
+        "backgroundCover" : "linear-gradient(0deg, rgb(204, 176, 196) 0%, transparent 100%)",
+        "imgUrl" : "/image/Mato-Seihei-no-Slave.png"
+    },
+    {
+        "title" : "Sousou No Frieren",
+        "shortDescription": "Nữ pháp sư Elf - Frieren và những đồng đội của mình đã đánh bại được Ma Vương và mang về bình yên cho vùng đất nơi đây. Cam go kết thúc, tất cả họ đều tách ra và sống một đời bình lặng. Nhưng với nàng Elf, Frieren, gần như bất tử, sẽ còn sống mãi và lâu hơn những đồng minh còn lại của tổ đội mình. Nàng sẽ phải chấp nhận việc bản thân bất tử còn đồng đội của mình thì không như thế nào? Làm cách nào mà nàng mới thấy thoả mãn với đời mình, và liệu nàng có thể học được ý nghĩa của cuộc sống thông qua những con người quanh nàng không? Frieren bắt đầu chuyến phiêu lưu mới nhằm tìm ra câu trả lời.",
+        "backgroundImg": "linear-gradient(132deg, rgb(141, 168, 120) 0%, rgb(68, 81, 29) 100%)",
+        "backgroundCover" : "linear-gradient(to bottom,rgba(141, 168, 120, 0.2) 0%, rgb(68, 81, 29) 100%)",
+        "imgUrl":"/image/image_processing20221201-7-17uja7e.jpg"
+    },
+    {
+        "title": "Wind Breaker (NII Satoru)",
+        "shortDescription": "Hãy bảo vệ khu phố bằng nắm đấm! Câu chuyện trở thành anh hùng khu phố từ một tên du côn năm nhất - Sakura Haruka!",
+        "backgroundImg": "linear-gradient(132deg, rgb(183, 183, 181) 0%, rgb(14, 13, 13) 100%)",
+        "backgroundCover": "linear-gradient(0deg, rgb(183, 183, 181) 0%, transparent 100%)",
+        "imgUrl": "/image/Wind-Breaker.png"
+    },
+    {
+        "title" : "Sousou No Frieren",
+        "shortDescription": "Nữ pháp sư Elf - Frieren và những đồng đội của mình đã đánh bại được Ma Vương và mang về bình yên cho vùng đất nơi đây. Cam go kết thúc, tất cả họ đều tách ra và sống một đời bình lặng. Nhưng với nàng Elf, Frieren, gần như bất tử, sẽ còn sống mãi và lâu hơn những đồng minh còn lại của tổ đội mình. Nàng sẽ phải chấp nhận việc bản thân bất tử còn đồng đội của mình thì không như thế nào? Làm cách nào mà nàng mới thấy thoả mãn với đời mình, và liệu nàng có thể học được ý nghĩa của cuộc sống thông qua những con người quanh nàng không? Frieren bắt đầu chuyến phiêu lưu mới nhằm tìm ra câu trả lời.",
+        "backgroundImg": "linear-gradient(132deg, rgb(141, 168, 120) 0%, rgb(68, 81, 29) 100%)",
+        "backgroundCover" : "linear-gradient(to bottom,rgba(141, 168, 120, 0.2) 0%, rgb(68, 81, 29) 100%)",
+        "imgUrl":"/image/image_processing20221201-7-17uja7e.jpg"
+    },
+    {
+        "title": "Wind Breaker (NII Satoru)",
+        "shortDescription": "Hãy bảo vệ khu phố bằng nắm đấm! Câu chuyện trở thành anh hùng khu phố từ một tên du côn năm nhất - Sakura Haruka!",
+        "backgroundImg": "linear-gradient(132deg, rgb(183, 183, 181) 0%, rgb(14, 13, 13) 100%)",
+        "backgroundCover": "linear-gradient(0deg, rgb(183, 183, 181) 0%, transparent 100%)",
+        "imgUrl": "/image/Wind-Breaker.png"
+    }
+   ]
+}

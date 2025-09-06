@@ -1,0 +1,40 @@
+
+.menu-list{
+    width: 200px;
+    
+    pointer-events: auto;
+}
+
+.menu-popper{
+    pointer-events: auto;
+    padding-bottom: 8px;
+}
+
+.menu-body{
+    overflow-y: auto;
+}
+
+
+
+.menu-item{
+    width: 100%;
+    
+    border-radius: 0;
+    padding: 11px 16px;
+    line-height: 1.8rem;
+    font-weight: 350;
+    
+    margin-left: 0 !important;
+    justify-content: left !important;
+
+    &.separate{
+        border-top: 1px solid rgba(22,24,35,0.12);
+    }
+
+
+    &:hover{
+        
+        background-color: rgba(22,24,35,0.03);
+        
+    }
+}

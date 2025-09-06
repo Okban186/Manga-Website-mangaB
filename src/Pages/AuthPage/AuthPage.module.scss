@@ -1,0 +1,94 @@
+
+
+.auth{
+    background-color: #e1efff;
+    height: 100vh;
+}
+.auth > img {
+    width: 100%;
+    height: auto;       /* bắt buộc có chiều cao */
+    object-fit: contain; /* ảnh sẽ co lại để vừa khung */
+  }
+
+.authFormContainer{
+    display: flex;
+    overflow: scroll;
+    //position: relative;
+    background-color: #cfd4d5;
+    flex: 1 1 0;
+    align-items: center;
+    width: 90rem;
+    height: 80%;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 3px 3px 12px rgba(0,0,0,0.3);
+}
+
+.imageSideBanner{
+    border-radius: 4px;
+    width: 50rem;
+    background-color: white;
+    
+    & img{
+        width: 100%;
+        border-radius: 4px;
+        height: auto;       /* bắt buộc có chiều cao */
+        object-fit: contain;
+    }
+} 
+
+
+.sideBanner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    background-color: white;
+    height: 100%;
+}
+
+
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .labelWelcome{
+    font-size: 4rem;
+    font-weight: 900;
+    margin-top: 5rem;
+    color: #fa8fb3;
+    animation: fadeIn 0.5s ease forwards;
+    user-select: none;
+}
+
+.switchMode{
+    font-size: 3rem;
+    user-select: none;
+    margin-top: 8rem;
+    color: #2d53a2;;
+    font-weight: 700;
+    padding: 2rem 4rem;
+    border: 1px solid black;
+    border-radius: 4rem;
+    transition: transform 0.8s ease;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #e3e3e3;
+        border-color: #e3e3e3;;
+        transform: scale(1.05);
+    }
+    
+}
+

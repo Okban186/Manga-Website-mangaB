@@ -1,0 +1,74 @@
+.wrapper{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-family: "ProximaNova", sans-serif;
+    border-radius: 4px;
+    cursor: pointer;
+    + .wrapper{
+        margin-left: 6px;    
+    }
+}
+
+.icon{
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+.icon + .title, .title + .icon{
+    margin-left: 8px;
+}
+
+//button-type
+
+.rounded{
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+    border-color: rgba(22,24,35,0.12);
+
+    &:hover{
+        border-color: rgba(22,24,35,0.2);
+        background-color: rgba(22,24,35,0.03);
+    }
+}
+
+.circle{
+        
+        background-color: #d4d6d8c3;;
+        outline:none;
+        padding: 14px 14px;
+        cursor: pointer;
+        border: none;
+        border-radius: 30px;
+
+        &:hover{
+            background-color: rgba(0,0,0,0.2);
+        }
+}
+
+
+
+
+.text{
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+
+//button-size
+
+.small{
+    width: 88px;
+    padding: 4px 16px;
+}
+
+.large{
+    padding: 14px 16px;
+    min-width: 148px;
+}
+

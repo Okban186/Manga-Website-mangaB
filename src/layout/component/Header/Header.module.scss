@@ -1,0 +1,44 @@
+.wrapper{
+    display: flex;
+    position: fixed;
+   // background-color: rgba(255, 255, 255, 0.543);
+
+    //backdrop-filter: blur(5px); 
+    height: 60px;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    justify-content: center;
+    color: #696969;
+    user-select: none;
+}
+
+.inner{
+    width: 67.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftPane{
+    font-size: 12px;
+    font-weight: 800;
+
+    a:not(:last-child){
+        margin-right: 20px;
+    }
+}
+
+.homeDirection{
+    font-size: 15px;
+    font-weight: 800;
+}
+
+//actions
+
+.action{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
