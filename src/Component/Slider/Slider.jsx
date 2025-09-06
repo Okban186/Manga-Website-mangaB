@@ -14,7 +14,7 @@ export default function Slider({items, className, changeHeroBackground, data}){
         changeHeroBackground(data.data[index].backgroundImg)
     }
 
-    const nextItem = () => setCurrent(prev => (prev+ 1)% items.length)
+    const nextItem = () => setCurrent(prev => (prev+ 1)% items.length);
     const prevItem = () => setCurrent(prev => (prev - 1 + items.length) % items.length)
 
     const generateItemSlider = () =>{
