@@ -3,7 +3,7 @@ import styles from "./Slider.module.scss"
 import classNames from "classnames/bind"
 
 const cx = classNames.bind(styles)
-
+//mmb vcl
 export default function Slider({items, className, changeHeroBackground, data}){
 
 
