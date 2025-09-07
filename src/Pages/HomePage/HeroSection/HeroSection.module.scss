@@ -2,7 +2,6 @@
 //Hero banner
 
 .hero-banner{
-    position: relative;
     display: flex;
     justify-content: center;
     height: 600px;
@@ -10,7 +9,6 @@
 }
 
 .hero-section{
-    position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -23,6 +21,13 @@
     left: 0;
     height: 592px;
     width: 100%;
+    opacity: 0.4;
+    animation: heroBackgroundShow 1s ease-in forwards;
+    
+}
+
+@keyframes heroBackgroundShow{
+    100% { opacity: 1;}
 }
 
 .hero-img{

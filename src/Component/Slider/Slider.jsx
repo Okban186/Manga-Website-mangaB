@@ -35,8 +35,13 @@ export default function Slider({items, className, changeHeroBackground, data}){
 
     return (
         <div className={cx("slider")} >
-            <div className={cx("slides")} >{generateItemSlider()}</div>
-
+            
+            <div className={cx("slides")} >
+                <div className={cx("spacingVisibale-left")}/>
+                {generateItemSlider()}
+                <div className={cx("spacingVisibale-right")}/>
+            </div>
+            
             <div className={cx("dots")}>
                 {generateDotIndicator()}
             </div>

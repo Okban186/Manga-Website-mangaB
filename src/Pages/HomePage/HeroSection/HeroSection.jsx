@@ -3,17 +3,25 @@ import styles from "./HeroSection.module.scss"
 import Button from "../../../Component/Button/Button";
 import heroData from "../../../assets/data/data.json"
 import Slider from "../../../Component/Slider/Slider";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const cx = classNames.bind(styles)
 
 function HeroSection({children}){
 
     const [heroBackgroundBanner, setHeroBackground] = useState(heroData.data[0].backgroundImg)
+    const [updataHerobackground, setUpdateHeroBackground] = useState(heroData.data[0].backgroundImg)
 
     const changeHeroBackground = (background) => {
-        setHeroBackground(background)
+            setUpdateHeroBackground(background)
     }
+
+    useEffect(() =>{
+        const timeOut = setTimeout(() => {
+            setHeroBackground(updataHerobackground)
+        },500)
+           return () => clearTimeout(timeOut)
+    }, [updataHerobackground])
 
     const generateHeroBanner =() =>{
 
@@ -35,13 +43,16 @@ function HeroSection({children}){
     return(
 
         <div className={cx("hero-section")}>
-            <div style={{ background: heroBackgroundBanner}} className={cx("hero-background")}></div>
+            <div key={Math.random()}  className={cx("hero-background") } style={ // co tinh re render de chay duoc animation
+                { 
+                background: heroBackgroundBanner
+                }}></div>
             <div  className={cx("hero-banner")}>
                 
-                <div style={{marginRight: "20px"}} className={cx("hero-img")} />
+                {/* <div style={{marginRight: "20px"}} className={cx("hero-img")} /> */}
                 <Slider changeHeroBackground={changeHeroBackground}  items={generateHeroBanner()} data={heroData}/>
                 
-                <div style={{marginLeft : "20px"}} className={cx("hero-img")} />
+                {/* <div style={{marginLeft : "20px"}} className={cx("hero-img")} /> */}
             </div>
         </div>
     )

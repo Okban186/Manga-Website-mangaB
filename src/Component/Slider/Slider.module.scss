@@ -2,12 +2,12 @@
 .slider{
     position: relative;
     height: 752px;
-    display: flex;
-   
-    flex-direction: column;
+    width: 100%;
+
 }
 
 .slides{
+    width: 100%;
     display: flex;
     flex-direction: row;
     
@@ -15,7 +15,7 @@
 
 .slide{
     transition: transform 0.7s ease-in-out,opacity 0.5s ease;
-    
+    flex-shrink: 0;
     &:not(:last-child){
         
         margin-right: 20px;
@@ -30,16 +30,27 @@
     opacity: 0.15;
 }
 
-   
+.spacingVisibale-left{
+    min-width: 290px;
+    margin-right: 20px;
+    flex-shrink: 1;
+} 
+
+.spacingVisibale-right{
+    min-width: 290px;
+    margin-left: 20px;
+    flex-shrink: 1;
+}
 
 
 .dots {
-    position: absolute;
-    bottom: 10px;
-    left: 20%;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+ position: absolute;
+ flex-shrink: 0;
+ bottom: 10px;
+    width: 100vw;
+  justify-content: center;
+  display: flex;
+  gap: 8px;
   }
   
   .dot {
