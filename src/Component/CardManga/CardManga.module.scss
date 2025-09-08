@@ -1,0 +1,35 @@
+.card-section{
+
+    margin-bottom: 20px;
+    img{
+        max-width: 160px;
+        border-radius: 8px;
+        box-shadow: 5px 1px 5px  rgba(70, 70, 70, 0.433);
+    }
+
+   
+}
+
+
+
+.title-card{
+    display: -webkit-box;
+    font-size: 1.3rem;
+    font-weight: 600;
+    -webkit-line-clamp: 2;       /* Giới hạn tối đa 3 dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.information-card{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-size: 1.3rem;
+    color: #374151;;
+}
+
+.chapter-card{
+    font-weight: 600;
+}

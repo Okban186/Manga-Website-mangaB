@@ -1,0 +1,37 @@
+.wrapper{
+    
+}
+
+.inner{
+    margin: 0 auto;
+    width: 67.5%;
+}
+
+.title-section-row{
+    font-weight: 600;
+    font-size: 2rem;
+    color: #374151;
+    margin-bottom: 60px;
+}
+
+.section-row{
+   padding: 80px 0;
+}
+
+//card-section
+
+.container-card{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    
+   
+}
+
+.slide-hero{ //class rieng cho phan slider
+    width: 67.5vw;
+}
+
+
+

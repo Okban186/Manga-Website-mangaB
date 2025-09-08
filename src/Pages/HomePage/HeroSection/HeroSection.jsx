@@ -48,11 +48,9 @@ function HeroSection({children}){
                 background: heroBackgroundBanner
                 }}></div>
             <div  className={cx("hero-banner")}>
-                
-                {/* <div style={{marginRight: "20px"}} className={cx("hero-img")} /> */}
-                <Slider changeHeroBackground={changeHeroBackground}  items={generateHeroBanner()} data={heroData}/>
-                
-                {/* <div style={{marginLeft : "20px"}} className={cx("hero-img")} /> */}
+
+                <Slider slide_each_element active_each_element spacingVisibale className={cx("slider-hero")} dots clickCardSlide changeHeroBackground={changeHeroBackground}  items={generateHeroBanner()} data={heroData}/>
+
             </div>
         </div>
     )
