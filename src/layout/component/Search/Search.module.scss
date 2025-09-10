@@ -1,5 +1,6 @@
 
 .wrapper{
+    --width-search: 475px;
     display: inline-flex;
     min-width: 48px; //De chua cho trong cho button search do thg btn su dung absolute nen thg con khong tinh vao layout cua thg cha
     height: 47px;
@@ -24,6 +25,7 @@
     height: 47px;
     border-radius: 999px;
     font-size: 1.6rem;
+    padding-right: 50px;
     animation: slideIn 0.5s ease-out forwards;
 
    input{
@@ -42,19 +44,18 @@
     }
     to {
       opacity: 1;                /* hiện rõ */
-      width: 25vw; /* về đúng vị trí ban đầu */
+      width: var(--width-search);
     }
   }
 
 @keyframes slideOut{
     from{
         opacity: 1;
-        width: 25vw;
+        width: var(--width-search);
     }
     to{
         opacity: 0;
         width: 0;
-        
     }
 }
 
@@ -85,3 +86,91 @@
 .disable{
     display: none;
 }
+
+
+@media screen and (max-width: 1000px) {
+    .wrapper{
+		--width-search: 200px;
+    }
+}
+
+
+
+//drop result
+
+.search-result{
+    --width-drop-result: 475px;
+    width: 0;
+    border-radius: 4px;
+    overflow: scroll;
+    max-height: min(calc((100vh - 90px) - 60px), 500px) ;
+    min-height: 200px;
+    color: black;
+    background-color: #ffffff;
+    opacity: 0;
+    transform: translateY(10px);
+    
+}
+
+
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      width: 0;
+      transform: translateX(10px);
+    }
+    to {
+      opacity: 1;
+      width: var(--width-drop-result);
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOutDown {
+    from {
+      opacity: 1;
+      width: var(--width-drop-result);
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      width: 0;
+      transform: translateX(10px);
+    }
+  }
+  
+  .search-result[data-state="visible"] {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+  
+  .search-result[data-state="hidden"] {
+    animation: fadeOutDown 0.5s ease-out forwards;
+  }
+
+  .container-result{
+    background-color: #d4d6d8dc;
+    width: calc(var(--width-drop-result) - 20px);
+    border-radius: .5rem;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+} 
+
+.card-result{
+    border-width: 0;
+    border-color: white;
+    border-bottom-width: 2px;
+    border-style: solid;
+}
+
+.card-inner{
+    padding: 8px 8px 8px 8px;
+}
+
+.searh-more{
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 8px;
+    overflow: hidden;
+}
+  

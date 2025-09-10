@@ -54,7 +54,7 @@ function SectionRow({header, apiGetData}){
     }
 
 
-
+    
     return (
         <div className={cx("wrapper")}>
             <div className={cx("section-row")} >

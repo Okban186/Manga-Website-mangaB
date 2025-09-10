@@ -1,5 +1,4 @@
 .card-section{
-
     margin-bottom: 20px;
     img{
         max-width: 160px;
@@ -12,19 +11,21 @@
 
 
 
-.title-card{
+.title-card, .author-card{
     display: -webkit-box;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 700;
     -webkit-line-clamp: 2;       /* Giới hạn tối đa 3 dòng */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+
+
 .information-card{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 8px;
     font-size: 1.3rem;
     color: #374151;;
@@ -32,4 +33,34 @@
 
 .chapter-card{
     font-weight: 600;
+
+    &::after{
+        margin-left: 8px;
+        content: "-";
+    }
+}
+
+.inline{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.card-section.smallImg{
+    img{
+        max-width: 80px;
+    }
+}
+
+.card-section.horizontal-card{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin: 0;
+
+    .title-card{
+        font-size: 1.6rem;
+        color: black;
+    }
 }

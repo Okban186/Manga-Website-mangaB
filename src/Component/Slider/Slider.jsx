@@ -23,7 +23,7 @@ export default function Slider({items,
 
     const sliderSize = useResizeObserver(sliderRef)
     
-    const [sliderProps, setSliderProps] = useState({len : items.length, sliderWidth : 0, slidesWidth : 0, firstTime: 0})
+    const [sliderProps, setSliderProps] = useState({len : items.length, sliderWidth : 0, slidesWidth : 0})
     const [current, setCurrent] = useState(0)
     const nextSlide = () => {
         if(isCooldown) return
@@ -45,9 +45,12 @@ export default function Slider({items,
             setSliderProps({len,
                 sliderWidth : sliderSize.width,
                 slidesWidth : slidesRef.current.scrollWidth,
-                firstTime : 1
             })
-            setCurrent(prev => ((prev+sliderProps.firstTime)%len))
+            setCurrent(prev => {
+                if(prev == len)
+                    return (prev+1)%len
+                return prev%len
+            })
 
         },600)
         return () => clearTimeout(timeOut)
@@ -56,7 +59,6 @@ export default function Slider({items,
     useEffect(() =>{
         if(changeHeroBackground)
             changeHeroBackground(data.data[current].backgroundImg)
-        console.log("current "+ current)
     },[current])
     
     
