@@ -15,10 +15,15 @@ export default function Slider({items,
     slide_each_element = false,
     dots = false,
     arrow = false,
-    clickCardSlide = false
+    clickCardSlide = false,
+    ref
 }){
 
     const sliderRef = useRef(null)
+    function setSliderRefs(el){
+        sliderRef.current = el
+        if(ref) ref.current = el 
+    }
     const slidesRef = useRef(null)
 
     const sliderSize = useResizeObserver(sliderRef)
@@ -90,9 +95,8 @@ export default function Slider({items,
           ></span>
         ))
     }
-
     return (
-        <div ref={sliderRef} className={cx("slider", className,over_flow_hidden ? "over_flow_hidden" : "")} >
+        <div ref={setSliderRefs} className={cx("slider", className,over_flow_hidden ? "over_flow_hidden" : "")} >
             
             {slide_each_element ? 
             <div className={cx("slides")} >
@@ -108,7 +112,7 @@ export default function Slider({items,
             </div>
             }
 
-                {arrow && 
+                {arrow && (Math.ceil(sliderProps.slidesWidth) > Math.ceil(sliderProps.sliderWidth)) &&
                     <>
                         <button className={cx("arrow","left")} onClick={prevSlide}>❮</button>
                         <button className={cx("arrow","right")} onClick={nextSlide}>❯</button>

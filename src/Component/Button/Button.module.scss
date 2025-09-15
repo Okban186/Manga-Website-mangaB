@@ -24,7 +24,7 @@
 
 //button-type
 
-.rounded{
+rounded{
     border-radius: 999px;
     box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
     border-color: rgba(22,24,35,0.12);
@@ -37,15 +37,16 @@
 
 .circle{
         
-        background-color: #d4d6d8c3;;
+        background-color: #9f9c9c57;;
         outline:none;
-        padding: 14px 14px;
+        height: 44px;
+        width: 44px;
         cursor: pointer;
         border: none;
         border-radius: 30px;
 
         &:hover{
-            background-color: rgba(0,0,0,0.2);
+            background-color: #d4d6d858;
         }
 }
 
@@ -64,7 +65,7 @@
 
 .small{
     width: 88px;
-    padding: 4px 16px;
+    padding: 4px 4px;
 }
 
 .large{

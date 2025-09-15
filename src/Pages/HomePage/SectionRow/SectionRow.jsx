@@ -9,25 +9,26 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { timeAgo } from "../../../Component/CardManga/timeago";
 import CardManga from "../../../Component/CardManga/CardManga";
+import useInView from "../../../hooks/useInView";
 const cx = classNames.bind(styles)
 
 
 
-function SectionRow({header, apiGetData}){
+function SectionRow({header, apiGetData, styles, genres, pageNumber,pageSize}){
 
     const [skeleton, setSkeleton] = useState(true)
     const [dataResult, setDataResult] = useState([])
+    const [ref,isInView] = useInView({threshold: 0.1, debouncing: 200})
     useEffect(() =>{
+        if(!isInView || dataResult.length > 0) return
         const fetchApi = async () =>{
             setSkeleton(true)
-            const response = await axios.get(apiGetData, {
-                params:{pageNumber:0,pageSize:24}
-            })
-            setDataResult(response.data)
+            const response = await apiGetData({genres, pageNumber,pageSize})
+            setDataResult(response)
             setSkeleton(false)
         }
         fetchApi()
-    },[apiGetData])
+    },[apiGetData,isInView])
     const generateCardSection = () =>(
             <div className={cx("container-card")}>
                { dataResult.map((item) => (
@@ -56,12 +57,12 @@ function SectionRow({header, apiGetData}){
 
     
     return (
-        <div className={cx("wrapper")}>
+        <div className={cx("wrapper")} style={styles}>
             <div className={cx("section-row")} >
 
                 <div className={cx("inner")}>
                     <div className={cx("title-section-row")}>{header}</div>
-                    <Slider className={cx("slide-hero")} over_flow_hidden arrow={!skeleton}
+                    <Slider ref={ref} className={cx("slide-hero")} over_flow_hidden arrow={!skeleton}
                     items={skeleton ? generateSkeletonCard() : generateCardSection()} />
                 </div>
             </div>

@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import css from "./LoginForm.module.scss"
 import classNames from "classnames/bind";
 import { useNavigate } from "react-router-dom";
+import { getInfo } from "../../Service/api";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const cx = classNames.bind(css);
 const regexPassword = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{16,}$/;
@@ -10,6 +12,7 @@ function LoginForm({mode}){
 
    
     const navigate = useNavigate()
+    const {setLogin} = useContext(AuthContext)
     const [loginForm, setLoginForm] = useState({
         "username" :"",
         "password": "",
@@ -67,7 +70,8 @@ function LoginForm({mode}){
     }
     
     const handleLogin = async(e) =>{
-        e.preventDefault();
+        if(e != undefined || e != null)
+            e.preventDefault();
         if(!loginForm.username || !loginForm.password ){
             setHandle("statusLogin","khong duoc de trong")
             return;
@@ -78,14 +82,16 @@ function LoginForm({mode}){
                 headers: {
                   "Content-Type": "application/json",
                 },
+                credentials: "include",
                  // 🔑 bắt buộc để gửi và nhận cookie
                 body: JSON.stringify({ username : loginForm.username, password:loginForm.password }),
               });
               
               if (response.ok) {
+                const userDetail = await getInfo()
+                localStorage.setItem("User Detail",JSON.stringify(userDetail))
+                setLogin(true)
                 navigate("/")
-                const data = await response.json();
-                localStorage.setItem("accessToken",data.token);
               } else {
                 if(response.status == 404) setHandle("statusLogin","User not found");
                 else if(response.status == 400) setHandle("statusLogin","Password incorrect");
@@ -93,7 +99,8 @@ function LoginForm({mode}){
     }
 
     const handleSignUp = async(e) =>{
-        e.preventDefault()
+        if(e != undefined || e != null)
+            e.preventDefault()
         if(!loginForm.username || !loginForm.password || !loginForm.firstname || !loginForm.lastname || !loginForm.dob){
             setHandle("statusLogin","Missing information!!")
             return;
@@ -113,9 +120,8 @@ function LoginForm({mode}){
 
         })
         if (response.ok) {
-            navigate("/")
-            const data = await response.json();
-            localStorage.setItem("accessToken",data.token);
+            handleLogin()
+      
           } else {
             if(response.status == 404) setHandle("statusLogin","User not found");
             else if(response.status == 400) setHandle("statusLogin","User Existed");

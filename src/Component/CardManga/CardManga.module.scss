@@ -4,7 +4,13 @@
         max-width: 160px;
         border-radius: 8px;
         box-shadow: 5px 1px 5px  rgba(70, 70, 70, 0.433);
+        transition: transform 0.3s ease;
+
+        &:hover{
+            transform: scale(1.05);
+        }
     }
+
 
    
 }

@@ -1,16 +1,39 @@
 .wrapper{
     display: flex;
     position: fixed;
-   // background-color: rgba(255, 255, 255, 0.543);
-
-    //backdrop-filter: blur(5px); 
+    background-color: rgba(255, 255, 255, 0.543);
+    backdrop-filter: blur(5px); 
     height: 60px;
     width: 100%;
     top: 0;
-    z-index: 1000;
+    z-index: 1100;
     justify-content: center;
-    color: #696969;
+    color: #5a5856 ;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.266);
+    
     user-select: none;
+}
+
+.wrapper.transparentHeader{
+    color: #c7bebb;
+    background-color: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+.default_color_out_com{
+    color: #5a5856;
+}
+
+.change_default_color_out_com{
+    color: #c7bebb;
+}
+
+.sentinel{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 20px;
 }
 
 .inner{

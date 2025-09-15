@@ -4,28 +4,30 @@ import Tippy from "@tippyjs/react/headless";
 import PopperWrapper  from "../Wrapper";
 import Button from "../../Button/Button";
 import MenuItem from "./MenuItem";
-import { faL } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import useLogout from "../../../hooks/useLogout";
 
 const cx = classNames.bind(css)
 
-const menuItems = [
-    {title : "Login", to:"/auth"},
-    {title : "Sign Up", to:"/auth?mode=signup"},
-    {title : "Downloaded Books", to:"/" ,separate: true}
-]
 
-function MenuDrop({children, classname}){
+
+function MenuDrop({children, classname, styles, classNamesBtn, menuItems }){
 
     const tippyRef = useRef();
+    const logout = useLogout()
 
     const handleHideTippy = () =>{
         tippyRef.current.hide();
     }
 
+
     const renderItem= () =>{
         return menuItems.map((item, index) =>{
-            return <MenuItem classNames={"menu-item"} data={item} key={index} onclick={handleHideTippy}></MenuItem>
+            return <MenuItem classNames={cx("menu-item")} data={item} key={index} onclick={() =>{
+                handleHideTippy();
+                if(item.title == "Logout")
+                    logout()
+             }}></MenuItem>
         })
     }
 
@@ -39,7 +41,7 @@ function MenuDrop({children, classname}){
         hideOnClick={true}
         onCreate={(instance) => (tippyRef.current = instance)}
         render={(attrs) =>(
-            <div className={cx("menu-list")} tabIndex={-1} { ...attrs}>
+            <div style={{styles}} className={cx("menu-list")} tabIndex={-1} { ...attrs}>
                 <PopperWrapper classname={"menu-popper"}>
                     <div className={cx("menu-body")}>{renderItem()}</div>
                 </PopperWrapper>

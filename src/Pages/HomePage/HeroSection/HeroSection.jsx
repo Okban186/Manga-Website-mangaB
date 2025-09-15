@@ -3,12 +3,12 @@ import styles from "./HeroSection.module.scss"
 import Button from "../../../Component/Button/Button";
 import heroData from "../../../assets/data/data.json"
 import Slider from "../../../Component/Slider/Slider";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const cx = classNames.bind(styles)
 
 function HeroSection({children}){
-
+    
     const [heroBackgroundBanner, setHeroBackground] = useState(heroData.data[0].backgroundImg)
     const [updataHerobackground, setUpdateHeroBackground] = useState(heroData.data[0].backgroundImg)
 
@@ -27,7 +27,7 @@ function HeroSection({children}){
 
 
         return  heroData.data.map((data, index) =>(
-                    <div key={index} className={cx("hero-img")}><img src={data.imgUrl}></img>
+                    <div key={index} className={cx("hero-img")}><img loading="lazy" src={data.imgUrl}></img>
                         <div className={cx("img-cover")} style={{ background: data.backgroundCover }} />
                         <div className={cx("description-wrapper")}>
                             <div className={cx("product-desciption")}>

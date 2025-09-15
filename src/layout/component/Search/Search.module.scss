@@ -102,13 +102,14 @@
     --width-drop-result: 475px;
     width: 0;
     border-radius: 4px;
-    overflow: scroll;
+    overflow-y: auto;
     max-height: min(calc((100vh - 90px) - 60px), 500px) ;
     min-height: 200px;
     color: black;
     background-color: #ffffff;
     opacity: 0;
     transform: translateY(10px);
+    overscroll-behavior: contain;
     
 }
 
@@ -150,10 +151,9 @@
   .container-result{
     background-color: #d4d6d8dc;
     width: calc(var(--width-drop-result) - 20px);
-    border-radius: .5rem;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    border-radius: .9rem;
+    overflow: hidden;
+    margin: 10px auto 10px auto;
 } 
 
 .card-result{
@@ -161,10 +161,18 @@
     border-color: white;
     border-bottom-width: 2px;
     border-style: solid;
+
+    &:hover{
+      background-color: #c6c8ca;
+    }
+    
 }
 
 .card-inner{
     padding: 8px 8px 8px 8px;
+    cursor: pointer;
+
+    
 }
 
 .searh-more{
@@ -172,5 +180,16 @@
     font-weight: 600;
     padding: 8px;
     overflow: hidden;
+    border: none;
+    &:hover{
+      background-color: #c6c8ca;
+    }
+}
+
+.state-result{
+  margin: 10px;
+  overflow: hidden;
+  font-style: italic;
+  font-size: 1.4rem;
 }
   

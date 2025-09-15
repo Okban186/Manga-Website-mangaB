@@ -1,28 +1,22 @@
 import styles from "./CardManga.module.scss"
 import classNames from "classnames/bind"
 import { timeAgo } from "./timeago"
+import { Link } from "react-router-dom"
+import {authorsBuilding} from "../../LogicalFunction/AuthorBuildingString"
 
 const cx = classNames.bind(styles)
 
 export default function CardManga({title,coverImg ,newestChapter, updateTime,createAt, horizontal, authors}){
 
+    let CardFrag = Link
+    if(horizontal) CardFrag = "div"
 
-    function authorsBuilding(authors){
-        if(authors == null || authors == undefined) return ""
-        let authorName = []
-        authorName.push(authors[0].name)
-        for(let i = 1; i < authors.length; i++){
-            authorName.push(", ")
-            authorName.push(authors[i].name)
-        }
-
-        return authorName.join("")
-    }
+   
 
 
     return (
-        <div className={cx("card-section",horizontal && ["horizontal-card","smallImg"])}>
-            {coverImg && <img src={coverImg} alt={title}></img>}
+        <CardFrag className={cx("card-section",horizontal && ["horizontal-card","smallImg"])}>
+            {coverImg && <img loading="lazy" src={coverImg} alt={title}></img>}
             
             {<div className={cx('information-card')}>
                 {title && <div className={cx("title-card")}>{title}</div>}
@@ -34,6 +28,6 @@ export default function CardManga({title,coverImg ,newestChapter, updateTime,cre
                     </div>}
                 </div>
             </div>}
-        </div>
+        </CardFrag>
     )
 }
