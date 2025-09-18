@@ -14,6 +14,10 @@
     user-select: none;
 }
 
+.wrapper.position_non_fix{
+    position: unset;
+}
+
 .wrapper.transparentHeader{
     color: #c7bebb;
     background-color: transparent;

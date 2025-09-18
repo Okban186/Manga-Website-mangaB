@@ -5,15 +5,18 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './Component/AuthProvider/AuthProvider.jsx'
+import { DefaultLayoutProvider } from './Component/DefaultLayoutProvider/DefaultLayoutProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
 
-    <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </AuthProvider>
+    <DefaultLayoutProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
+    </DefaultLayoutProvider>
 
   </StrictMode>,
 )

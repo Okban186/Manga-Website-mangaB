@@ -2,13 +2,14 @@ import { Route, Router, Routes } from 'react-router-dom'
 import './App.css'
 import { public_endpoints } from './routes/routes'
 import { Fragment, useContext, useEffect } from 'react'
-import DefaultLayout from './layout/DefaultLayout'
+import DefaultLayout from './layout/DefaultLayout/DefaultLayout'
 import { AuthContext } from './Component/AuthProvider/AuthProvider'
 import { getInfo } from './Service/api'
 import { Suspense } from 'react'
 function App() {
 
   const {isLogin,setLogin} = useContext(AuthContext)
+
   useEffect(() =>{
     const checkLogin = async () =>{
       const response = await getInfo()
@@ -38,7 +39,7 @@ function App() {
               path={route.path}
               key={index}
               element={
-                <Layout>
+                <Layout position_non_fix={route.position_non_fix} >
                   <Page />
                 </Layout>
               }

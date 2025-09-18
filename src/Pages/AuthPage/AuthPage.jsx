@@ -10,6 +10,9 @@ const cx = classNames.bind(css);
 function AuthPage(){
   const [searchParasm, setSearchParams] = useSearchParams()
   const mode = searchParasm.get("mode") || "login"
+  useEffect(() =>{
+    window.scrollTo(0,0)
+  },[])
   const toogleMode = () =>{
     
     setSearchParams({ mode: mode === "login" ? "signup" : "login" });

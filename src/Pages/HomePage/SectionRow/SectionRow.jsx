@@ -33,6 +33,7 @@ function SectionRow({header, apiGetData, styles, genres, pageNumber,pageSize}){
             <div className={cx("container-card")}>
                { dataResult.map((item) => (
                 <CardManga key={item.id} title={item.title} 
+                id={item.id} slug={item.slug}
                 coverImg={item.coverImg} 
                 newestChapter={item.newestChapter} 
                 updateTime={item.updateTime}

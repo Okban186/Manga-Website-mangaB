@@ -3,19 +3,20 @@ import classNames from "classnames/bind"
 import { timeAgo } from "./timeago"
 import { Link } from "react-router-dom"
 import {authorsBuilding} from "../../LogicalFunction/AuthorBuildingString"
+import { paths } from "../../routes/PathRoutes"
 
 const cx = classNames.bind(styles)
 
-export default function CardManga({title,coverImg ,newestChapter, updateTime,createAt, horizontal, authors}){
+export default function CardManga({id,slug="",title,coverImg ,newestChapter, updateTime,createAt, horizontal, authors}){
 
     let CardFrag = Link
-    if(horizontal) CardFrag = "div"
+
 
    
 
 
     return (
-        <CardFrag className={cx("card-section",horizontal && ["horizontal-card","smallImg"])}>
+        <CardFrag to={paths.mangas+"/"+`${id}-${slug}`} className={cx("card-section",horizontal && ["horizontal-card","smallImg"])}>
             {coverImg && <img loading="lazy" src={coverImg} alt={title}></img>}
             
             {<div className={cx('information-card')}>

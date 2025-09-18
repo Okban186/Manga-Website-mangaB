@@ -23,18 +23,21 @@ const menuItemsUser = [
     {title: "Logout"},
     {title : "Downloaded Books", to:"/" ,separate: true}
 ]
-function Header(){
+
+
+
+function Header({position_non_fix = false}){
 
     const location = useLocation()
     const sentinelRef = useRef(null)
-    const [transparentHeader, setTransparentHeader] = useState(location.pathname === "/")
+    const [transparentHeader, setTransparentHeader] = useState(location.pathname === "/" || location.pathname.startsWith("/chapters"))
     
 
     useEffect(() =>{
-        if(location.pathname != "/" && !transparentHeader) return
+        if(location.pathname != "/" && !location.pathname.startsWith("/chapters") && !transparentHeader) return
         const observe = new IntersectionObserver(
             ([entry]) => {
-                if(location.pathname != "/") setTransparentHeader(false)
+                if(location.pathname != "/" && !location.pathname.startsWith("/chapters")) setTransparentHeader(false)
                 else setTransparentHeader(entry.isIntersecting)
             }
         )
@@ -59,7 +62,7 @@ function Header(){
     return (
         <>
         <div ref={sentinelRef} className={cx("sentinel")} />
-        <div className={cx("wrapper",{transparentHeader})}>
+        <div className={cx("wrapper",{transparentHeader},{position_non_fix})}>
             <div className={cx("inner")}>
                 <div className={cx("leftPane")}>
                     <Link to="/">ĐĂNG TRUYỆN</Link>

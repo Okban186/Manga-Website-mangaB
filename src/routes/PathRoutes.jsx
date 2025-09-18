@@ -3,7 +3,8 @@ const paths ={
     home: "/",
     login: "/auth",
     signup: "/auth?mode=signup",
-    mangas:"/mangas"
+    mangas:"/mangas",
+    chapters: "/chapters"
 }
 
 export {paths}

@@ -41,10 +41,11 @@ function Search({classNamesBtn}){
     },[searchDebounce])
 
     const renderingCardResult = () =>{
-        return getValue.map((index) =>(
-            <div key={index.id} className={cx("card-result")}>
-                <div className={cx("card-inner")}>
-                    <CardManga title={index.title} horizontal={true} authors={index.authors}  coverImg={index.coverImg} />
+        return getValue.map((item) =>(
+            
+            <div key={item.id} className={cx("card-result")}>
+                <div onClick={handlingHideSearch} className={cx("card-inner")}>
+                    <CardManga id={item.id} slug={item.slug} title={item.title} horizontal={true} authors={item.authors}  coverImg={item.coverImg} />
                 </div>
             </div>
         ))
@@ -93,7 +94,7 @@ function Search({classNamesBtn}){
                     <div className={cx("exist")} onClick={handlingHideSearch}><FontAwesomeIcon icon={faArrowLeft}/></div>
                     <input  placeholder="Search..." type="text" value={searchValue} onChange={(e) => handlingInputValue(e.target.value)}/>
                 </div>
-                <Button circle className={cx("search-btn",classNamesBtn)} onClick={(hideSearch === null || hideSearch) ? handlingShowSearch : handlingHideSearch}><FontAwesomeIcon icon={faSearch}/></Button>
+                <Button circle className={cx("search-btn",(hideSearch || hideSearch == null) && classNamesBtn)} onClick={(hideSearch === null || hideSearch) ? handlingShowSearch : handlingHideSearch}><FontAwesomeIcon icon={faSearch}/></Button>
             </div>
         </HeadLessTippy>
 

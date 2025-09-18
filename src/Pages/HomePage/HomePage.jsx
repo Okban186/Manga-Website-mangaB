@@ -25,6 +25,7 @@ function HomePage(){
             const result = await getHomePageSetting()
             setHomePageSettings(result)
         }
+        window.scrollTo(0,0)
         callApi()
     },[])
 

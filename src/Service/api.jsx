@@ -43,7 +43,7 @@ const getHomePageSetting = async () =>{
         const result = await publicApi.get("/api/v2/setting")
         return result.data
     }catch(error){
-        console.log(error)
+        console.log("Loi khi lay HomePageSetting")
     }
 }
 
@@ -52,7 +52,7 @@ const getBookById = async ({id}) =>{
         const result = await publicApi.get(`/book/getBook/${id}`)
         return result.data
     }catch(error){
-        console.log(error)
+        console.log("Truyen nay co the khong ton tai hoac url sai")
     }
 }
 
@@ -67,7 +67,7 @@ const getInfo = async () => {
             console.log("Chưa đăng nhập hoặc JWT hết hạn");
             return null; // trả về null nếu không có thông tin user
         } else {
-            console.log("Lỗi khác:", error);
+            console.log("Lỗi khác");
             return null;
         }
     }
