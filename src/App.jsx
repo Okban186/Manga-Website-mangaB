@@ -39,7 +39,7 @@ function App() {
               path={route.path}
               key={index}
               element={
-                <Layout position_non_fix={route.position_non_fix} >
+                <Layout sentinal={route.sentainal} position_non_fix={route.position_non_fix} >
                   <Page />
                 </Layout>
               }

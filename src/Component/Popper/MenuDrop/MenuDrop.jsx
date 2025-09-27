@@ -4,7 +4,7 @@ import Tippy from "@tippyjs/react/headless";
 import PopperWrapper  from "../Wrapper";
 import Button from "../../Button/Button";
 import MenuItem from "./MenuItem";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import useLogout from "../../../hooks/useLogout";
 
 const cx = classNames.bind(css)
@@ -53,4 +53,4 @@ function MenuDrop({children, classname, styles, classNamesBtn, menuItems }){
     )
 }
 
-export default MenuDrop
+export default memo(MenuDrop)

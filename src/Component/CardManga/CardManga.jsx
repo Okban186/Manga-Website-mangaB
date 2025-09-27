@@ -17,7 +17,7 @@ export default function CardManga({id,slug="",title,coverImg ,newestChapter, upd
 
     return (
         <CardFrag to={paths.mangas+"/"+`${id}-${slug}`} className={cx("card-section",horizontal && ["horizontal-card","smallImg"])}>
-            {coverImg && <img loading="lazy" src={coverImg} alt={title}></img>}
+            {coverImg && <picture className={cx("coverImg")} ><img loading="lazy" src={coverImg} alt={title}></img></picture>}
             
             {<div className={cx('information-card')}>
                 {title && <div className={cx("title-card")}>{title}</div>}

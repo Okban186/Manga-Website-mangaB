@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./Search.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import Button from "../../../Component/Button/Button";
 import CardManga from "../../../Component/CardManga/CardManga"
 import HeadLessTippy from "@tippyjs/react/headless";
@@ -101,4 +101,4 @@ function Search({classNamesBtn}){
     )
 }
 
-export default Search;
+export default memo(Search);

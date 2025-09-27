@@ -2,9 +2,11 @@
 //Hero banner
 
 .hero-banner{
+    --default-height: 600px;
+    --default-skeleton-width-hero: 1282px;
     display: flex;
     justify-content: center;
-    height: 600px;
+    height: var(--default-height);
 
 }
 
@@ -33,9 +35,11 @@
 
 .hero-img{
     position: relative;
-    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
     min-width: 290px;
     top: 100px;
+
 
     img{
         border-radius: 10px;
@@ -110,4 +114,26 @@
 .slider-hero{
     height: 752px;
     width: 100vw;
+}
+
+//skeleton
+
+.hero-img-skeleton{
+    position: relative;
+    top: 100px;
+    width: 100vw;
+    height: var(--default-height);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .canvas-skeleton{
+        background-color:#0d121d;
+        border-radius: 10px;
+        width:var(--default-skeleton-width-hero);
+        margin: 0 20px;
+        height: 100%;
+    }
+
 }

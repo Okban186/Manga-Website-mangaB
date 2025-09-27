@@ -18,14 +18,15 @@ const public_api = {
 
 function HomePage(){
     const [homePageSettings, setHomePageSettings] = useState([])
-
+    window.scrollTo(0,0)
     useEffect(() =>{
+        
         const callApi = async () =>{
             
             const result = await getHomePageSetting()
             setHomePageSettings(result)
         }
-        window.scrollTo(0,0)
+        
         callApi()
     },[])
 

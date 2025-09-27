@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import css from "./Header.module.scss"
 import classNames from "classnames/bind"
-import { Link, useLocation, useSearchParams } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
 import MenuDrop from "../../../Component/Popper/MenuDrop/MenuDrop"
 import Button from "../../../Component/Button/Button"
@@ -26,19 +26,22 @@ const menuItemsUser = [
 
 
 
-function Header({position_non_fix = false}){
+function Header({position_non_fix = false, sentinal = false}){
 
     const location = useLocation()
     const sentinelRef = useRef(null)
-    const [transparentHeader, setTransparentHeader] = useState(location.pathname === "/" || location.pathname.startsWith("/chapters"))
+    const [transparentHeader, setTransparentHeader] = useState()
     
+    useEffect(() =>{
+        setTransparentHeader(location.pathname === "/" || location.pathname.startsWith("/chapters"))
+    },[location.pathname])
 
     useEffect(() =>{
-        if(location.pathname != "/" && !location.pathname.startsWith("/chapters") && !transparentHeader) return
+        if(!sentinal) return
         const observe = new IntersectionObserver(
             ([entry]) => {
-                if(location.pathname != "/" && !location.pathname.startsWith("/chapters")) setTransparentHeader(false)
-                else setTransparentHeader(entry.isIntersecting)
+            setTransparentHeader(entry.isIntersecting)
+
             }
         )
         if(sentinelRef.current)
@@ -48,8 +51,7 @@ function Header({position_non_fix = false}){
             if(sentinelRef.current)
                 observe.disconnect()
         }
-    })
-    
+    },[sentinal])
 
     const {isLogin} = useContext(AuthContext)
     const userDetail = useMemo(() =>{
@@ -58,10 +60,10 @@ function Header({position_non_fix = false}){
     },[isLogin])
         
     
-
+    
     return (
         <>
-        <div ref={sentinelRef} className={cx("sentinel")} />
+        { sentinal && <div ref={sentinelRef} className={cx("sentinel")} />}
         <div className={cx("wrapper",{transparentHeader},{position_non_fix})}>
             <div className={cx("inner")}>
                 <div className={cx("leftPane")}>

@@ -6,7 +6,7 @@ import { paths } from "./PathRoutes";
 import ChapterPage from "../Pages/ChapterPage/ChapterPage";
 
 const public_endpoints= [
-    {path: paths.home, component : HomePage},
+    {path: paths.home, component : HomePage, sentainal : true},
     {path: paths.login, component : AuthPage},
     {path: paths.mangas+"/:param", component: MangasPage},
     {path: paths.chapters+"/:id", component: ChapterPage, position_non_fix : true}

@@ -7,13 +7,13 @@ import styles from "./DefaultLayout.module.scss"
 
 const cx = classNames.bind(styles)
 
-function DefaultLayout({children, position_non_fix}){
+function DefaultLayout({children, position_non_fix,sentinal}){
 
     const {backgroundColor} = useContext(DefaultLayoutContext)
 
     return (
         <div className={cx("wrapper")} style={{backgroundColor}}>
-            <Header position_non_fix={position_non_fix} />
+            <Header sentinal={sentinal} position_non_fix={position_non_fix} />
             {children}
             <Footer />
         </div>

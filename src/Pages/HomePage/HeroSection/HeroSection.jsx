@@ -9,7 +9,7 @@ const cx = classNames.bind(styles)
 
 function HeroSection({children}){
     
-    const [heroBackgroundBanner, setHeroBackground] = useState(heroData.data[0].backgroundImg)
+    const [heroBackgroundBanner, setHeroBackground] = useState("#040509")
     const [updataHerobackground, setUpdateHeroBackground] = useState(heroData.data[0].backgroundImg)
 
     const changeHeroBackground = (background) => {
@@ -48,7 +48,9 @@ function HeroSection({children}){
                 background: heroBackgroundBanner
                 }}></div>
             <div  className={cx("hero-banner")}>
-
+                {/* <div className={cx("hero-img-skeleton")}>                     
+                    <canvas className={cx("canvas-skeleton")} />                 
+                </div> */}
                 <Slider slide_each_element active_each_element spacingVisibale className={cx("slider-hero")} dots clickCardSlide changeHeroBackground={changeHeroBackground}  items={generateHeroBanner()} data={heroData}/>
 
             </div>

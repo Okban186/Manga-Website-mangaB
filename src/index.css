@@ -6,10 +6,12 @@
 }
 body {
 	font-family: 'Poppins', 'Roboto', sans-serif;
-	overflow-X: hidden;
-	background-color: #d1d5db;
+	overflow-x: hidden;
   }
 
+.no-scroll{
+	overflow: hidden;
+}
 
 :root{
 	--default-login-form-width: 40rem;
