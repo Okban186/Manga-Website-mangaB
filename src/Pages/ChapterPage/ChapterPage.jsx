@@ -49,8 +49,8 @@ function ChapterPage() {
           <Link to={paths.mangas + "/" + dataResult.book_id} className={cx("prev-manga-page")}><FontAwesomeIcon icon={faArrowLeft} /> {dataResult.name}</Link>
           <h1>{createChapterTitle()}</h1>
           <div className={cx("function-btn")}>
-            <Button to={paths.chapters + "/" + dataResult.next_chapter_id} className={cx("next-chapter", dataResult.next_chapter_id == null ? "not-response-color" : "")}>NEXT CHAPTER</Button>
-            <Button to={paths.chapters + "/" + dataResult.prev_chapter_id} className={cx("pre-chapter", dataResult.prev_chapter_id == null ? "not-response-color" : "")}>PREVIOUS CHAPTER</Button>
+            <Button to={paths.mangas + "/" + dataResult.book_id + paths.chapters + "/" + dataResult.next_chapter_id} className={cx("next-chapter", dataResult.next_chapter_id == null ? "not-response-color" : "")}>NEXT CHAPTER</Button>
+            <Button to={paths.mangas + "/" + dataResult.book_id + paths.chapters + "/" + dataResult.prev_chapter_id} className={cx("pre-chapter", dataResult.prev_chapter_id == null ? "not-response-color" : "")}>PREVIOUS CHAPTER</Button>
           </div>
         </div>
         <div className={cx("wrapper_vertical")}>
@@ -63,14 +63,14 @@ function ChapterPage() {
           }
         </div>
         <div className={cx("next-chapter-btn")}>
-          <Button to={paths.chapters + "/" + dataResult.next_chapter_id} className={cx("inner", dataResult.next_chapter_id == null ? "not-response-color" : "")}>
+          <Button to={paths.mangas + "/" + dataResult.book_id + paths.chapters + "/" + dataResult.next_chapter_id} className={cx("inner", dataResult.next_chapter_id == null ? "not-response-color" : "")}>
             <div>{dataResult.next_chapter_order == -1 ? "THIS IS LATEST CHAPTER" : `READ CHAPTER ${dataResult.next_chapter_order}`}</div>
             {dataResult.title_next_chapter && <div>{dataResult.title_next_chapter.toUpperCase()}</div>}
           </Button>
         </div>
         <div style={{ maxWidth: "624px", display: "flex", flexDirection: "row", margin: "8px auto 0 auto" }}>
           {dataResult.prev_chapter_id == null ? <Button className={cx("func-button-bottom", "not-response-color")}><div>OLDEST CHAPTER</div></Button> :
-            <Button to={paths.chapters + "/" + dataResult.prev_chapter_id} className={cx("func-button-bottom")}>{`PREVIOUS CHAPTER - ${dataResult.prev_chapter_order}`}</Button>}
+            <Button to={paths.mangas + "/" + dataResult.book_id + paths.chapters + "/" + dataResult.prev_chapter_id} className={cx("func-button-bottom")}>{`PREVIOUS CHAPTER - ${dataResult.prev_chapter_order}`}</Button>}
           <Button className={cx("func-button-bottom")} onClick={() => window.scrollTo(0, 0)} ><div>TO TOP</div></Button>
         </div>
       </main >

@@ -13,18 +13,6 @@ import { DefaultLayoutContext } from "../../Component/DefaultLayoutProvider/Defa
 
 const cx = classNames.bind(styles)
 
-const genres_items = [
-  { title: "hành động", amount: 380 },
-  { title: "nsfw", amount: 224 },
-  { title: "siêu nhiên", amount: 344 },
-  { title: "hài hước", amount: 746 },
-  { title: "đang tiến hành", amount: 742 },
-  { title: "manga", amount: 1515 },
-  { title: "supernatural", amount: 306 },
-  { title: "shounen", amount: 327 },
-  { title: "ecchi", amount: 251 },
-  { title: "khỏa thân", amount: 191 }
-]
 
 function MangasPage() {
 
@@ -35,7 +23,6 @@ function MangasPage() {
   const [dataResult, setDataResult] = useState({})
   const { param } = useParams()
   const navigate = useNavigate()
-
   const id = useMemo(() => {
 
     return param.split("-")[0]
@@ -56,6 +43,7 @@ function MangasPage() {
 
   useEffect(() => {
     setDataResult({})
+    setExtendDiscription(true)
     const callApi = async () => {
       const response = await getBookById({ id: id })
       if (response == undefined) {
@@ -75,31 +63,31 @@ function MangasPage() {
   }, [id])
   useEffect(() => {
     if (!descriptionInnerRef.current) return
-    if (descriptionInnerRef.current.scrollHeight > 200) setDescriptionInnterOF(true)
-  }, [])
+    setDescriptionInnterOF(descriptionInnerRef.current.scrollHeight > 200)
+  }, [dataResult, param])
 
   const toogleExtendDiscription = () => {
     setExtendDiscription((prev) => !prev)
   }
 
-  const renderingGenreItems = () => {
+  const renderingGenreItems = useMemo(() => {
     return dataResult?.genres?.map((item, index) => {
       return (
-        <div key={index} className={cx("genre-item")}>
+        <Link to={paths.category + "/" + item.name} key={index} className={cx("genre-item")}>
           <div className={cx("genre-title")}>
             {item.name}
           </div>
           <div className={cx("amount-genre")}>
             {item.book_count}
           </div>
-        </div>
+        </Link>
       )
     })
-  }
+  }, [dataResult.genres, param])
 
-  const renderingChapterList = () => {
+  const renderingChapterList = useMemo(() => {
     return dataResult.chapters?.map((item) => {
-      return <Link to={paths.chapters + "/" + item.id} key={item.id} className={cx("chapter-item")}>
+      return <Link to={paths.mangas + `/${param}` + paths.chapters + "/" + item.id} key={item.id} className={cx("chapter-item")}>
         <h5>Chapter {item.chapter_order}</h5>
         <div className={cx("chapter-info")}>
           <div className={cx("title", item.title == null ? "noTitle" : "")}>
@@ -112,75 +100,88 @@ function MangasPage() {
       </Link>
 
     })
-  }
+  }, [dataResult.chapters, param])
 
+
+
+
+
+
+  const profileManga = useMemo(() => {
+    return <div className={cx("profile-manga")}>
+      <div className={cx("cover-art")}>
+        <canvas style={{ position: "absolute", zIndex: "0", width: "100%", height: "100%", backgroundColor: "rgb(17, 24, 39)" }}></canvas>
+        <div className={cx("color-cover")} style={{ background: dataResult.canvasCover + "50%)" }}></div>
+        <picture >
+          <img src={dataResult.backgroundImg}></img>
+        </picture>
+      </div>
+      <div className={cx("volumn-title")}>
+        <div className={cx("title-info")}>
+          {Object.keys(dataResult).length > 0 ? <>
+            <h2>{authorsBuilding(dataResult.authors)}</h2>
+            <h1>{dataResult.title}</h1>
+          </> :
+            <>
+              <div className={cx("skeleton-author")} />
+              <div className={cx("skeleton-name")} />
+            </>}
+        </div>
+        <div className={cx("volumn-cover")}>
+          <picture>
+            <canvas style={{ backgroundColor: "gray", position: "absolute", width: "100%", height: "100%" }}></canvas>
+            <img src={dataResult.coverImg} />
+          </picture>
+        </div>
+      </div>
+    </div>
+
+  }, [dataResult, param])
+
+  const metaInfo = useMemo(() => {
+    return <div className={cx("meta-info")}>
+      <div className={cx("meta-inner")}>
+        <div className={cx("meta-inner-inner")}>
+          <div>
+            {Object.keys(dataResult).length > 0 ?
+              <>
+                <div className={cx("update-time")}>
+                  <FontAwesomeIcon icon={faClock} /> {dataResult.updateTime ? timeAgo(dataResult.updateTime) : timeAgo(dataResult.createAt)}
+                </div>
+                <div className={cx("genres")}>
+                  {renderingGenreItems}
+                </div>
+              </>
+              :
+              <div className={cx("skeleton-meta-tag")} />}
+          </div>
+          <div className={cx("function-btn")}>
+            {Object.keys(dataResult).length > 0 ?
+              <>
+                <Button className={cx("follow-btn")}>FOLLOW THE MANGA</Button>
+                <Button to={paths.mangas + `/${id}` + paths.chapters + "/" + dataResult?.chapters?.at(-1)?.id} className={cx("read-first-page-btn")}>READ FROM CHAPTER {dataResult?.chapters?.at(-1)?.chapter_order}</Button>
+              </> :
+              <>
+                <div className={cx("skeleton-button-meta")} />
+                <div className={cx("skeleton-button-meta")} />
+              </>
+            }
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  }, [dataResult, param])
 
   return (
     <>
       <div className={cx("wrapper")}>
         <div className={cx("inner")}>
           {/* Phan nay se chua bao gom art cover volumn img them phan mau mo phia sau */}
-          <div className={cx("profile-manga")}>
-            <div className={cx("cover-art")}>
-              <canvas style={{ position: "absolute", zIndex: "0", width: "100%", height: "100%", backgroundColor: "rgb(17, 24, 39)" }}></canvas>
-              <div className={cx("color-cover")} style={{ background: dataResult.canvasCover + "50%)" }}></div>
-              <picture >
-                <img src={dataResult.backgroundImg}></img>
-              </picture>
-            </div>
-            <div className={cx("volumn-title")}>
-              <div className={cx("title-info")}>
-                {Object.keys(dataResult).length > 0 ? <>
-                  <h2>{authorsBuilding(dataResult.authors)}</h2>
-                  <h1>{dataResult.title}</h1>
-                </> :
-                  <>
-                    <div className={cx("skeleton-author")} />
-                    <div className={cx("skeleton-name")} />
-                  </>}
-              </div>
-              <div className={cx("volumn-cover")}>
-                <picture>
-                  <canvas style={{ backgroundColor: "gray", position: "absolute", width: "100%", height: "100%" }}></canvas>
-                  <img src={dataResult.coverImg} />
-                </picture>
-              </div>
-            </div>
-          </div>
-
+          {profileManga}
           {/* Chua cac thong tin nhu the loai, ngay cap nhat moi nhat, nut chuc nang */}
-          <div className={cx("meta-info")}>
-            <div className={cx("meta-inner")}>
-              <div className={cx("meta-inner-inner")}>
-                <div>
-                  {Object.keys(dataResult).length > 0 ?
-                    <>
-                      <div className={cx("update-time")}>
-                        <FontAwesomeIcon icon={faClock} /> {dataResult.updateTime ? timeAgo(dataResult.updateTime) : timeAgo(dataResult.createAt)}
-                      </div>
-                      <div className={cx("genres")}>
-                        {renderingGenreItems()}
-                      </div>
-                    </>
-                    :
-                    <div className={cx("skeleton-meta-tag")} />}
-                </div>
-                <div className={cx("function-btn")}>
-                  {Object.keys(dataResult).length > 0 ?
-                    <>
-                      <Button className={cx("follow-btn")}>FOLLOW THE MANGA</Button>
-                      <Button to={paths.chapters + "/" + dataResult?.chapters?.at(-1)?.id} className={cx("read-first-page-btn")}>READ FROM CHAPTER {dataResult?.chapters?.at(-1)?.chapter_order}</Button>
-                    </> :
-                    <>
-                      <div className={cx("skeleton-button-meta")} />
-                      <div className={cx("skeleton-button-meta")} />
-                    </>
-                  }
-
-                </div>
-              </div>
-            </div>
-          </div>
+          {metaInfo}
           {/* phan nay chua thuc nhat la thong tin nguoi dang thu 2 la phan mo ta, chua cac list chapter */}
           <div className={cx("body-part")}>
             <div className={cx("body-part-inner")}>
@@ -188,7 +189,10 @@ function MangasPage() {
                 <div className={cx("description", { "overflow-hidden": extendDiscription && descriptionInnerOF })}>
                   <div ref={descriptionInnerRef}>
                     <div className={cx("owner")}>
-                      <img alt="SUICAO" src="https://storage-ct.lrclib.net/file/cuutruyen/uploads/team/210/avatar/processed-41ce67905bd99bed1253634a05d91fb6.jpg"></img>
+                      <img
+                        alt="SUICAO"
+                        src="https://storage-ct.lrclib.net/file/cuutruyen/uploads/team/210/avatar/processed-41ce67905bd99bed1253634a05d91fb6.jpg"
+                      />
                       <div className={cx("information")}>
                         <div className={cx("name-owner")}>SỦI CẢO</div>
                         <h6>4 TRUYỆN</h6>
@@ -205,7 +209,7 @@ function MangasPage() {
                 <div className={cx("chapter-list")}>
                   <h6>CHAPTER LIST</h6>
                   <div className={cx("chapters-container")}>
-                    {renderingChapterList()}
+                    {renderingChapterList}
                   </div>
                 </div>
               </div>

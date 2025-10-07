@@ -8,18 +8,18 @@ import { getInfo } from './Service/api'
 import { Suspense } from 'react'
 function App() {
 
-  const {isLogin,setLogin} = useContext(AuthContext)
+  const { isLogin, setLogin } = useContext(AuthContext)
 
-  useEffect(() =>{
-    const checkLogin = async () =>{
+  useEffect(() => {
+    const checkLogin = async () => {
       const response = await getInfo()
-      if(response){
-        localStorage.setItem("User Detail",JSON.stringify(response))
+      if (response) {
+        localStorage.setItem("User Detail", JSON.stringify(response))
         setLogin(true)
-      }else setLogin(false)
+      } else setLogin(false)
     }
     checkLogin()
-  },[isLogin])
+  }, [isLogin])
 
 
 
@@ -32,14 +32,14 @@ function App() {
             Layout = route.layout
           else if (route.layout === null)
             Layout = Fragment
-  
+
           const Page = route.component
           return (
             <Route
               path={route.path}
               key={index}
               element={
-                <Layout sentinal={route.sentainal} position_non_fix={route.position_non_fix} >
+                <Layout sentinal={route.sentainal} transparent_header={route.transparent_header} position_non_fix={route.position_non_fix} >
                   <Page />
                 </Layout>
               }
@@ -50,6 +50,6 @@ function App() {
     </Suspense>
   )
 }
-  
+
 
 export default App

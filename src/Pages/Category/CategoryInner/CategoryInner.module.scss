@@ -1,0 +1,43 @@
+.wrapper {
+  display: flow-root;
+  --default-width: 1282px;
+}
+
+.inner {
+  width: var(--default-width);
+  margin: 90px auto;
+
+  h1 {
+    font-size: 2.2rem;
+  }
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+
+}
+
+.button-page-movement {
+  width: 250px;
+  background-color: #2563eb;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  height: 40px;
+
+  &+.button-page-movement {
+    margin-left: 20px;
+  }
+
+  &:hover {
+    background-color: #1f4ba9;
+  }
+}
+
+.button-page-movement.disable {
+  background-color: gray;
+  pointer-events: none;
+}

@@ -1,196 +1,211 @@
-
-.wrapper{
-    --width-search: 475px;
-    display: inline-flex;
-    min-width: 48px; //De chua cho trong cho button search do thg btn su dung absolute nen thg con khong tinh vao layout cua thg cha
-    height: 47px;
-    position: relative;
-    overflow: hidden;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-right: 6px;
-    border-radius: 999px;
-    border: 1px solid transparent;
-    color:#5a5856;
+.wrapper {
+  --width-search: 475px;
+  display: inline-flex;
+  min-width: 48px; //De chua cho trong cho button search do thg btn su dung absolute nen thg con khong tinh vao layout cua thg cha
+  height: 47px;
+  position: relative;
+  overflow: hidden;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 6px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: #5a5856;
 }
 
 
-.search{
-    background-color:  #d4d6d8c3;;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 0px;
-    height: 47px;
-    border-radius: 999px;
-    font-size: 1.6rem;
-    padding-right: 50px;
-    animation: slideIn 0.5s ease-out forwards;
+.search {
+  background-color: #d4d6d8c3;
+  ;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 0px;
+  height: 47px;
+  border-radius: 999px;
+  font-size: 1.6rem;
+  padding-right: 50px;
+  animation: slideIn 0.5s ease-out forwards;
 
-   input{
-        width: 100%;
-        border: inherit;
-        outline: inherit;
-        background-color: transparent;
-        
-   }
+  input {
+    width: 100%;
+    border: inherit;
+    outline: inherit;
+    background-color: transparent;
+
+  }
 }
+
 
 @keyframes slideIn {
-    from {
-      opacity: 0;                /* ban đầu ẩn */
-      width: 48px; /* dịch sang phải 100px */
-    }
-    to {
-      opacity: 1;                /* hiện rõ */
-      width: var(--width-search);
-    }
+  from {
+    opacity: 0;
+    /* ban đầu ẩn */
+    width: 48px;
+    /* dịch sang phải 100px */
   }
 
-@keyframes slideOut{
-    from{
-        opacity: 1;
-        width: var(--width-search);
-    }
-    to{
-        opacity: 0;
-        width: 0;
-    }
+  to {
+    opacity: 1;
+    /* hiện rõ */
+    width: var(--width-search);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    width: var(--width-search);
+  }
+
+  to {
+    opacity: 0;
+    width: 0;
+  }
 }
 
 
 
-.search-btn{
-    position: absolute;
-    top: 0;
-    right: 0;
+.search-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-.exist{
-    cursor: pointer;
-    background-color:  transparent;
-    padding: 14px;
-    border-radius: 999px;
-    color:#5a5856;
-    &:hover{
-        background-color: rgba(0,0,0,0.2);;
-    }
-    
+.exist {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 14px;
+  border-radius: 999px;
+  color: #5a5856;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    ;
+  }
+
 }
 
-.slide-out{
-    animation: slideOut 0.5s ease-out forwards;
+.slide-out {
+  animation: slideOut 0.5s ease-out forwards;
 }
 
-.disable{
-    display: none;
+.disable {
+  display: none;
 }
 
 
 @media screen and (max-width: 1000px) {
-    .wrapper{
-		--width-search: 200px;
-    }
+  .wrapper {
+    --width-search: 200px;
+  }
 }
 
 
 
 //drop result
 
-.search-result{
-    --width-drop-result: 475px;
-    width: 0;
-    border-radius: 4px;
-    overflow-y: auto;
-    max-height: min(calc((100vh - 90px) - 60px), 500px) ;
-    min-height: 200px;
-    color: black;
-    background-color: #ffffff;
-    opacity: 0;
-    transform: translateY(10px);
-    overscroll-behavior: contain;
-    
+.search-result {
+  --width-drop-result: 475px;
+  width: 0;
+  border-radius: 4px;
+  overflow-y: auto;
+  max-height: min(calc((100vh - 90px) - 60px), 500px);
+  min-height: 200px;
+  color: black;
+  background-color: #ffffff;
+  opacity: 0;
+  transform: translateY(10px);
+  overscroll-behavior: contain;
+
+}
+
+.advance-search {
+  width: 455px;
+  margin: 8px auto;
 }
 
 
 @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      width: 0;
-      transform: translateX(10px);
-    }
-    to {
-      opacity: 1;
-      width: var(--width-drop-result);
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes fadeOutDown {
-    from {
-      opacity: 1;
-      width: var(--width-drop-result);
-      transform: translateX(0);
-    }
-    to {
-      opacity: 0;
-      width: 0;
-      transform: translateX(10px);
-    }
-  }
-  
-  .search-result[data-state="visible"] {
-    animation: fadeInUp 0.5s ease-out forwards;
-  }
-  
-  .search-result[data-state="hidden"] {
-    animation: fadeOutDown 0.5s ease-out forwards;
+  from {
+    opacity: 0;
+    width: 0;
+    transform: translateX(10px);
   }
 
-  .container-result{
-    background-color: #d4d6d8dc;
-    width: calc(var(--width-drop-result) - 20px);
-    border-radius: .9rem;
-    overflow: hidden;
-    margin: 10px auto 10px auto;
-} 
-
-.card-result{
-    border-width: 0;
-    border-color: white;
-    border-bottom-width: 2px;
-    border-style: solid;
-
-    &:hover{
-      background-color: #c6c8ca;
-    }
-    
+  to {
+    opacity: 1;
+    width: var(--width-drop-result);
+    transform: translateX(0);
+  }
 }
 
-.card-inner{
-    padding: 8px 8px 8px 8px;
-    cursor: pointer;
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    width: var(--width-drop-result);
+    transform: translateX(0);
+  }
 
-    
+  to {
+    opacity: 0;
+    width: 0;
+    transform: translateX(10px);
+  }
 }
 
-.searh-more{
-    font-size: 1.3rem;
-    font-weight: 600;
-    padding: 8px;
-    overflow: hidden;
-    border: none;
-    &:hover{
-      background-color: #c6c8ca;
-    }
+.search-result[data-state="visible"] {
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
-.state-result{
+.search-result[data-state="hidden"] {
+  animation: fadeOutDown 0.5s ease-out forwards;
+}
+
+.container-result {
+  background-color: #d4d6d8dc;
+  width: calc(var(--width-drop-result) - 20px);
+  border-radius: .9rem;
+  overflow: hidden;
+  margin: 10px auto 10px auto;
+}
+
+.card-result {
+  border-width: 0;
+  border-color: white;
+  border-bottom-width: 2px;
+  border-style: solid;
+
+  &:hover {
+    background-color: #c6c8ca;
+  }
+
+}
+
+.card-inner {
+  padding: 8px 8px 8px 8px;
+  cursor: pointer;
+
+
+}
+
+.searh-more {
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 8px;
+  overflow: hidden;
+  border: none;
+
+  &:hover {
+    background-color: #c6c8ca;
+  }
+}
+
+.state-result {
   margin: 10px;
   overflow: hidden;
   font-style: italic;
   font-size: 1.4rem;
 }
-  
